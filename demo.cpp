@@ -16,8 +16,11 @@ int test(vector<string> input);
 
 
 int quit( vector<string> input);
-
-
+int help( vector<string> input);
+int take( vector<string> input);
+int inventory( vector<string> input);
+int look( vector<string> input);
+int attack( vector<string> input);
 
 
 typedef int (*action_method) (vector<string>);
@@ -34,6 +37,7 @@ int main(int argc,  char* argv[])
 
     mapping["test"] = &test;
     mapping["quit"] = &quit;
+    mapping["help"] = &help;
 //    map.insert({"test",test});
 
 
@@ -73,6 +77,8 @@ int main(int argc,  char* argv[])
     auto function = mapping[out];
     function(args);
     }
+
+    printw(">>");
     refresh();
 
 
@@ -107,6 +113,41 @@ int quit( vector<string> input)
 
 
 
+int help( vector<string> input)
+{
+
+    printw("Welcome to ND Zork!  inspired by the game zork, ND zork recreates the essence of zork in a C++ environment for the modern computer.  lets test pout a longer sentense\n");
+    return 0;
+
+}
+
+int attack( vector<string> input)
+{
+    return 0;
+}
+
+
+int take( vector<string> input)
+{
+
+    // put item into players inventory
+    return 0;
+
+}
+
+int look( vector<string> input)
+{
+
+    //player.location.look_string
+    return 0;
+}
+
+int inventory( vector<string> input)
+{
+    return 0;
+
+};
+
 vector<string> get()
 {
 
@@ -125,4 +166,15 @@ copy(istream_iterator<string>(iss),
     return tokens;
 //
 };
+
+class item
+{
+
+
+string text;
+string appearence;
+
+};
+
+
 
