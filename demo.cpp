@@ -29,7 +29,7 @@ typedef unordered_map<string, action_method>::const_iterator it;
 
 int main(int argc,  char* argv[])
 {
-
+   
 
 
     action_map mapping;
@@ -144,9 +144,34 @@ int look( vector<string> input)
 
 int inventory( vector<string> input)
 {
+
+    // list items in the player's inventory
+
     return 0;
 
 };
+
+
+int move( vector<string> input)
+{
+    // parse direction
+    
+
+    //  check current location pointer in that direction
+
+
+    // update player pointer
+
+
+    // read description of the area
+
+    // list description of items in the area
+
+    return 0;
+
+}
+
+
 
 vector<string> get()
 {
@@ -170,9 +195,10 @@ copy(istream_iterator<string>(iss),
 class item
 {
 
-
+string name;
 string text;
 string appearence;
+
 
 };
 
