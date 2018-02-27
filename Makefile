@@ -8,3 +8,4 @@ demo.o: demo.cpp
 
 clean:
 	rm *.o
+	rm a.out
