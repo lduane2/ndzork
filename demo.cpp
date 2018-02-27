@@ -65,7 +65,7 @@ int main(int argc,  char* argv[])
     it function_iterator =  mapping.find(out);
     if (function_iterator == mapping.end())
     {   
-        printw("I don't understand the word %s!", out.c_str());
+        printw("I don't understand the word %s!\n>>", out.c_str());
         continue;
     }
     else
