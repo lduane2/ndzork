@@ -6,14 +6,14 @@
 class Parse {
 public:
 	Parse();
-	Parse(std::string action, std::string dirobj, std::string indobj);
-	std::string get_action();
-	std::string get_dirobj();
-	std::string get_indobj();
+	Parse(std::string verb, std::string dirobj, std::string indobj);
+	std::string get_verb();
+	std::string get_dobj();
+	std::string get_iobj();
 private:
-	std::string action;
-	std::string dirobj;
-	std::string indobj;
+	std::string verb;
+	std::string dobj;
+	std::string iobj;
 };
 
 #endif

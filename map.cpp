@@ -7,9 +7,13 @@ Map::~Map() {
 }
 
 void Map::add_room(Room *r) {
-	rooms.push_back(r);
+	rooms.insert(r);
 }
 
-std::vector<Room *> Map::get_rooms() {
+void Map::remove_room(Room *r) {
+	rooms.erase(r);
+}
+
+std::unordered_set<Room *> Map::get_rooms() {
 	return rooms;
 }
