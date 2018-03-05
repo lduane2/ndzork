@@ -3,16 +3,16 @@
 Parse::Parse(){
 }
 
-Parse::Parse(std::string action, std::string dirobj, std::string indobj) :
-	action(action), dirobj(dirobj), indobj(indobj) {
+Parse::Parse(std::string verb, std::string dobj, std::string iobj) :
+	verb(verb), dobj(dobj), iobj(iobj) {
 }
 
-std::string Parse::get_action() {
-	return action;
+std::string Parse::get_verb() {
+	return verb;
 }
-std::string Parse::get_dirobj() {
-	return dirobj;
+std::string Parse::get_dobj() {
+	return dobj;
 }
-std::string Parse::get_indobj() {
-	return indobj;
+std::string Parse::get_iobj() {
+	return iobj;
 }

@@ -3,14 +3,22 @@
 
 #include "object.hpp"
 #include "item.hpp"
-#include <vector>
+#include "command.hpp"
+
+#include <unordered_set>
 
 class Actor : public Object {
 public:
 	virtual ~Actor();
-	std::vector<Item *> get_items();
-private:
-	std::vector<Item *> items;
+
+	std::unordered_set<Item *> get_items();
+	void add_item(Item *item);
+	void remove_item(Item *item);
+
+	virtual bool handle(Command c);
+
+protected:
+	std::unordered_set<Item *> items;
 };
 
 #endif

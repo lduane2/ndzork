@@ -1,0 +1,36 @@
+#include "game.hpp"
+
+Game::Game(Room *sp,
+					 Actor *p) :
+	spawn_point(sp),
+	player(p),
+	player_location(spawn_point)
+{
+}
+
+// Can't build map here! Damn!
+Game::~Game() {
+	delete map;
+}
+
+Object * Game::str2obj(std::string s) {
+	for (auto item : player_location->get_items()) {
+		if (item->get_name() == s) {
+			return item;
+		}
+	}
+
+	for (auto actor : player_location->get_actors()) {
+		if (actor->get_name() == s) {
+			return actor;
+		}
+		for (auto item : actor->get_items()) {
+			if (item->get_name() == s) {
+				return item;
+			}
+		}
+	}
+
+	return nullptr;
+}
+

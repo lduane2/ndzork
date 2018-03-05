@@ -3,15 +3,16 @@
 
 #include "room.hpp"
 
-#include <vector>
+#include <unordered_set>
 
 class Map {
 public:
 	~Map();
 	void add_room(Room *r);
-	std::vector<Room *> get_rooms();
+	void remove_room(Room *r);
+	std::unordered_set<Room *> get_rooms();
 private:
-	std::vector<Room *> rooms;
+	std::unordered_set<Room *> rooms;
 };
 
 #endif

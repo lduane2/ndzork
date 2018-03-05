@@ -1,13 +1,17 @@
 #include "object.hpp"
 
+#include "gameio.hpp"
+
 Object::~Object() {
 }
-std::string Object::perform_action(Parse parse) {
-	return "action could not be performed";
+
+bool Object::handle(Command c) {
+	std::string verb = c.get_verb();
+	if (c.get_dobj() == this) {
+		if (verb == "look") {
+			print(get_descr(),'\n');
+			return true;
+		}
+	}
+	return false;
 }
-// std::string Object::perform_action(Parse parse) {
-// 	if (act2fn.find(parse.get_action()) != act2fn.end()) {
-// 		return act2fn[parse.get_action()](parse);
-// 	}
-// 	return "Action cannot be completed";
-// }

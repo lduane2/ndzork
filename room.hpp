@@ -4,20 +4,35 @@
 #include "object.hpp"
 #include "item.hpp"
 #include "actor.hpp"
-#include <vector>
+#include "command.hpp"
+
+#include <unordered_set>
 
 class Room : public Object {
 public:
 	virtual ~Room();
-	// void enter();
-	// void exit();
-	std::vector<Item *> get_items();
-	std::vector<Actor *> get_actors();
-	std::vector<Room *> get_adj_rooms();
+
+	std::unordered_set<Item *> get_items();
+	std::unordered_set<Actor *> get_actors();
+	std::unordered_set<Room *> get_adj_rooms();
+
+	void add_item(Item *item);
+	void add_actor(Actor *actor);
+	void add_adj_room(Room *room);
+
+	void remove_item(Item *item);
+	void remove_actor(Actor *actor);
+	void remove_adj_room(Room *room);
+
+	virtual bool handle(Command c);
+
 protected:
-	std::vector<Item *> items;
-	std::vector<Actor *> actors;
-	std::vector<Room *> adj_rooms;
+	std::unordered_set<Item *> items;
+	std::unordered_set<Actor *> actors;
+	std::unordered_set<Room *> adj_rooms;
+
+	// Actions
+	virtual bool look(Command c);
 };
 
 #endif
