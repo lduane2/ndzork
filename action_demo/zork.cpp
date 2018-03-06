@@ -98,6 +98,7 @@ void Zork::build_actions() {
 	add_handler("open", &Zork::open);
 	add_handler("quit", {"q", "goodbye"}, &Zork::quit);
     add_handler("yell", {"scream"}, &Zork::yell);
+    add_handler("light", &Zork::light);
 }
 
 void Zork::add_handler(std::string verb,

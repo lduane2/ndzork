@@ -38,7 +38,7 @@ private:
 	bool open(Command command);
 	bool quit(Command command);
     bool yell(Command command);
-
+    bool light(Command command);
 
 };
 
