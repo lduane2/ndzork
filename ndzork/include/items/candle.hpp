@@ -1,8 +1,8 @@
 #ifndef ITEM_CANDLE_HPP
 #define ITEM_CANDLE_HPP
 
-#include "../../item.hpp"
-#include "../../command.hpp"
+#include "item.hpp"
+#include "../command.hpp"
 
 class Candle : public Item {
 public:
@@ -16,7 +16,6 @@ private:
 
 	//Actions
 	bool light();
-	//bool putout();
 };
 
 #endif
