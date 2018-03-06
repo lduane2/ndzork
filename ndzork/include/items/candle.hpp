@@ -3,6 +3,8 @@
 
 #include "item.hpp"
 #include "../command.hpp"
+#include "../../include/actors/actor.hpp"
+#include "../../include/rooms/room.hpp"
 
 class Candle : public Item {
 public:

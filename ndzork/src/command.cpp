@@ -20,7 +20,6 @@ Room * Command::get_room() {
 }
 
 Actor * Command::get_actor() {
-	print("getting actor\n");
 	return actor;
 }
 

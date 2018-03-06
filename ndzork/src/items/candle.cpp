@@ -1,5 +1,4 @@
 #include "../../include/items/candle.hpp"
-
 #include "../../include/game/gameio.hpp"
 
 std::string Candle::get_name() {
@@ -37,9 +36,9 @@ bool Candle::take(Command c) {
 	} else {
 		print("You took the candle\n");
 		Room * room = c.get_room();
-		//room->remove_item(this);
-		auto actor = c.get_actor();
-		//actor->add_item(this);
+		room->remove_item(this);
+		Actor * actor = c.get_actor();
+		actor->add_item(this);
 	}
 	return true;
 }
