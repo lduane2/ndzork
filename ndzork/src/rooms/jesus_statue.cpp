@@ -3,6 +3,7 @@
 
 Jesus_Statue::Jesus_Statue() {
 	add_item(new Candle());
+	add_item(new Stones());
 }
 
 std::string Jesus_Statue::get_name() {
