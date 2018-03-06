@@ -8,9 +8,9 @@
 
 
 West_Of_House::West_Of_House() {
-	add_item(new Mailbox());
-	add_item(new House());
-    add_item(new jesusStatue());
+    add_item(new Mailbox());
+    add_misc(new Misc("south"));
+
 }
 
 std::string West_Of_House::get_name() {

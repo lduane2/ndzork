@@ -94,6 +94,11 @@ Map * Zork::build_map() {
 	Map *map = new Map();
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
+    Room * westOfHouse = new West_Of_House();
+    spawn_point->add_adj_room("north", westOfHouse);
+    map->add_room(westOfHouse);
+    westOfHouse->add_adj_room("south", spawn_point);
+
     
 	return map;
 }
