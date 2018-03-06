@@ -12,6 +12,10 @@ Room::~Room() {
 	for (auto actor : get_actors()) {
 		delete actor;
 	}
+
+	for (auto misc : get_miscs()) {
+		delete misc;
+	}
 }
 
 std::unordered_set<Item *> Room::get_items() {
