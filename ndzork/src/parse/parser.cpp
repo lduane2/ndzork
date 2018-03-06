@@ -38,7 +38,7 @@ Parse Parser::parse(std::string input) {
 
 	while (words >> word) {
 		if (verbs.find(word) != verbs.end()) {
-			verb = word;
+			verb = syn2verb[word];
 			break;
 		}
 	}
@@ -76,8 +76,15 @@ Parse Parser::parse(std::string input) {
 	return Parse(verb, dobj, iobj);
 }
 
-void Parser::add_verb(std::string verb) {
+void Parser::add_verb(std::string verb,
+											std::initializer_list<std::string> synonyms)
+{
 	verbs.insert(verb);
+	syn2verb[verb] = verb;
+	for (auto syn : synonyms) {
+		verbs.insert(syn);
+		syn2verb[syn] = verb;
+	}
 }
 
 void Parser::add_actor(std::string actor) {

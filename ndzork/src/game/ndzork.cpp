@@ -34,13 +34,13 @@ void NDZork::loop() {
 
 void NDZork::handle(Command c) {
 	// Logging. Delete before turning in
-	// Object *dobj = c.get_dobj();
-	// Object *iobj = c.get_iobj();
-	// error("verb  = ", c.get_verb(), "\n");
-	// error("actor = ", c.get_actor()->get_name(), "\n");
-	// error("room  = ", c.get_room()->get_name(), "\n");
-	// error("dobj  = ", (dobj) ? dobj->get_name() : "nullptr", "\n");
-	// error("iobj  = ", (iobj) ? iobj->get_name() : "nullptr", "\n");
+	Object *dobj = c.get_dobj();
+	Object *iobj = c.get_iobj();
+	error("verb  = ", c.get_verb(), "\n");
+	error("actor = ", c.get_actor()->get_name(), "\n");
+	error("room  = ", c.get_room()->get_name(), "\n");
+	error("dobj  = ", (dobj) ? dobj->get_name() : "nullptr", "\n");
+	error("iobj  = ", (iobj) ? iobj->get_name() : "nullptr", "\n");
 
 	// Actor
 	if (c.get_actor()->handle(c)) {
@@ -108,10 +108,9 @@ void NDZork::add_handler(std::string verb,
 												 bool(NDZork::*handler)(Command command))
 {
 	verb2handler[verb] = handler;
-	parser.add_verb(verb);
+	parser.add_verb(verb, synonyms);
 	for (auto syn : synonyms) {
 		verb2handler[syn] = handler;
-		parser.add_verb(syn);
 	}
 }
 

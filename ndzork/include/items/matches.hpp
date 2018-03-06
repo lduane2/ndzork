@@ -9,11 +9,13 @@
 class Matches : public Item {
 public:
 	std::string get_name();
+	std::string get_full_name();
 	std::string get_descr();
 	bool handle(Command command);
 
 private:
 	std::string name = "matches";
+	std::string full_name = "box of matches";
 
 	//Actions
 	bool take(Command command);

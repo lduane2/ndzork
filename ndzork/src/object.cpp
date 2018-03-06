@@ -5,6 +5,10 @@
 Object::~Object() {
 }
 
+std::string Object::get_full_name() {
+	return get_name();
+}
+
 bool Object::handle(Command /*c*/) {
 	return false;
 }

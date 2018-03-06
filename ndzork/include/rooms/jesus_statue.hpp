@@ -12,8 +12,8 @@ public:
 	std::string get_descr();
 	bool handle(Command c);
 private:
-	std::string name = "Jesus Statue";
-	std::string description = "The "+get_name()+" needs a description.";
+	std::string name = "The Jesus Statue";
+	std::string description = "You stand on main quad. The golden dome is super shiny today. You like that.";
 };
 
 #endif
