@@ -42,3 +42,11 @@ bool Zork::yell(Command /*c*/) {
     print("YAAAAAARGGGGGHHH!\n");
     return true;
 }
+
+bool Zork::light(Command c) {
+	if (c.get_dobj() == nullptr) {
+		print("Light what?\n");
+		return true;
+	}
+	return false;
+}

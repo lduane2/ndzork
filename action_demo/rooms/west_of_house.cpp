@@ -4,6 +4,7 @@
 #include "../items/house.hpp"
 #include "../items/jesusStatue.hpp"
 #include "../actors/adventurer.hpp"
+#include "../items/candle.hpp"
 
 
 
@@ -11,6 +12,7 @@ West_Of_House::West_Of_House() {
 	add_item(new Mailbox());
 	add_item(new House());
     add_item(new jesusStatue());
+    add_item(new Candle());
 }
 
 std::string West_Of_House::get_name() {

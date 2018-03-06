@@ -1,23 +1,23 @@
-#include "zork.hpp"
+#include "../../include/game/ndzork.hpp"
 
-#include "rooms/west_of_house.hpp"
-#include "actors/adventurer.hpp"
-#include "../parse.hpp"
-#include "../gameio.hpp"
+#include "../../include/parse/parse.hpp"
+#include "../../include/game/gameio.hpp"
 
-// Must build map here!
-Zork::Zork() : Game(new West_Of_House(),
-										new Adventurer()),
-							 score(0), moves(0) {
+#include "../../include/actors/luke.hpp"
+#include "../../include/rooms/jesus_statue.hpp"
+
+NDZork::NDZork() : Game(new Jesus_Statue(),
+												new Luke()),
+									 score(0), moves(0) {
 	map = build_map();
 	parser = Parser(map);
 	build_actions();
 }
 
-Zork::~Zork() {
+NDZork::~NDZork() {
 }
 
-void Zork::loop() {
+void NDZork::loop() {
 	Parse p;
 	while(!ended) {
 		p = parser.parse(get_input_line());
@@ -31,7 +31,7 @@ void Zork::loop() {
 	}
 }
 
-void Zork::handle(Command c) {
+void NDZork::handle(Command c) {
 	// Logging. Delete before turning in
 	// Object *dobj = c.get_dobj();
 	// Object *iobj = c.get_iobj();
@@ -85,25 +85,24 @@ void Zork::handle(Command c) {
 	print("I don't know how to do that\n");
 }
 
-Map * Zork::build_map() {
+Map * NDZork::build_map() {
 	Map *map = new Map();
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
 	return map;
 }
 
-void Zork::build_actions() {
-	add_handler("look", {"describe"}, &Zork::look);
-	add_handler("close", &Zork::close);
-	add_handler("open", &Zork::open);
-	add_handler("quit", {"q", "goodbye"}, &Zork::quit);
-    add_handler("yell", {"scream"}, &Zork::yell);
-    add_handler("light", &Zork::light);
+void NDZork::build_actions() {
+	add_handler("look", {"describe"}, &NDZork::look);
+	add_handler("quit", {"q", "goodbye"}, &NDZork::quit);
+	add_handler("light", &NDZork::light);
+	add_handler("take", &NDZork::take);
+	add_handler("put", &NDZork::put);
 }
 
-void Zork::add_handler(std::string verb,
-											 std::initializer_list<std::string> synonyms,
-											 bool(Zork::*handler)(Command command))
+void NDZork::add_handler(std::string verb,
+												 std::initializer_list<std::string> synonyms,
+												 bool(NDZork::*handler)(Command command))
 {
 	verb2handler[verb] = handler;
 	parser.add_verb(verb);
@@ -113,28 +112,11 @@ void Zork::add_handler(std::string verb,
 	}
 }
 
-void Zork::add_handler(std::string verb,
-											bool(Zork::*handler)(Command command))
+void NDZork::add_handler(std::string verb,
+												 bool(NDZork::*handler)(Command command))
 {
 	add_handler(verb, {}, handler);
 }
 
-void Zork::demons() {
-}
-
-std::string Zork::get_rank() {
-	double pct = (double)score / (double)max_score;
-	if      (pct > 1)           return "Cheater";
-	else if (pct >= 0.99999999) return "Dungeon Master";
-	else if (pct >= 0.95000000) return "Wizard";
-	else if (pct >= 0.89999999) return "Master";
-	else if (pct >= 0.79999999) return "Winner";
-	else if (pct >= 0.60000000) return "Hacker";
-	else if (pct >= 0.39999999) return "Adventurer";
-	else if (pct >= 0.19999999) return "Junior Adventurer";
-	else if (pct >= 0.09999999) return "Novice Adventurer";
-	else if (pct >= 0.04999999) return "Amateur Adventurer";
-	else if (pct >= 0.0)        return "Beginner";
-
-	return "Incompetent";
+void NDZork::demons() {
 }
