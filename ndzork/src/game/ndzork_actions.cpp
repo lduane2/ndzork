@@ -14,7 +14,7 @@ bool NDZork::light(Command c){
 	return false;
 }
 
-bool Zork::go(Command c) {
+bool NDZork::go(Command c) {
     if (c.get_dobj() == nullptr) {
         print("Go Where?\n");
         return true;

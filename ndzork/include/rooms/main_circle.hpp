@@ -1,7 +1,7 @@
 #ifndef ROOM_MAIN_CIRCLE_HPP
 #define ROOM_MAIN_CIRCLE_HPP
 
-#include "../../room.hpp"
+#include "room.hpp"
 
 #include <string>
 

@@ -5,6 +5,8 @@
 
 #include "../../include/actors/luke.hpp"
 #include "../../include/rooms/jesus_statue.hpp"
+#include "../../include/rooms/main_circle.hpp"
+
 
 NDZork::NDZork() : Game(new Jesus_Statue(),
 												new Luke()),
@@ -91,6 +93,11 @@ Map * NDZork::build_map() {
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
 	
+	Room * mainCircle = new Main_Circle();
+	spawn_point->add_adj_room("south", mainCircle);
+
+	map->add_room(mainCircle);
+	mainCircle->add_adj_room("north", spawn_point);
 
 	return map;
 }
@@ -103,7 +110,7 @@ void NDZork::build_actions() {
 	add_handler("put", &NDZork::put);
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
-	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll"}, &Zork::go);
+	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll"}, &NDZork::go);
 }
 
 void NDZork::add_handler(std::string verb,

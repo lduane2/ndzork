@@ -1,9 +1,7 @@
-#include "main_circle.hpp"
+#include "../../include/rooms/main_circle.hpp"
+#include "../../include/items/matches.hpp"
+#include "../../include/misc.hpp"
 
-#include "../items/mailbox.hpp"
-#include "../items/house.hpp"
-#include "../items/jesusStatue.hpp"
-#include "../actors/adventurer.hpp"
 
 
 
@@ -11,7 +9,7 @@ Main_Circle::Main_Circle() {
 //	add_item(new Mailbox());
 //	add_item(new House());
     
-    add_item(new jesusStatue());
+    add_item(new Matches());
     add_misc(new Misc("north"));
 
 }
