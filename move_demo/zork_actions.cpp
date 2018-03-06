@@ -28,6 +28,14 @@ bool Zork::go(Command c) {
     if (c.get_dobj() == nullptr) {
         print("Go Where?\n");
         return true;
+
+    }
+    else {
+        auto rooms = player_location->get_dir_table();
+        
+        player_location =  rooms[c.get_dobj()->get_name()];         
+        std::cout << "you moved" << std::endl;
+        return true;
     }
     return false;
 }
