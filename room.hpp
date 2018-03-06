@@ -22,7 +22,7 @@ public:
     
 	void add_item(Item *item);
 	void add_actor(Actor *actor);
-	void add_adj_room(Room *room);
+	void add_adj_room(std::string, Room *room);
     void add_misc(Misc *misc);
 
 	void remove_item(Item *item);

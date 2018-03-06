@@ -41,10 +41,10 @@ void Room::add_item(Item *item) {
 void Room::add_actor(Actor *actor) {
 	actors.insert(actor);
 }
-/*void Room::add_adj_room(std::string dir, Room *room) {
+void Room::add_adj_room(std::string dir, Room *room) {
 	dir_table[dir] = room;
 }
-*/
+
 void Room::add_misc(Misc *misc) {
     miscs.insert(misc);
 }

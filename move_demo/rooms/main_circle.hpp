@@ -15,6 +15,7 @@ private:
 	std::string description = "You are standing in an green space surrounded by a traffic circle.  Taxis and Ubers occassionaly come and go, maing this a peaceful,yet busy, area.";
 
 	bool handle(Command c);
+    
 };
 
 #endif
