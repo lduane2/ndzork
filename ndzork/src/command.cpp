@@ -1,4 +1,5 @@
 #include "../include/command.hpp"
+#include "../include/game/gameio.hpp"
 
 Command::Command(std::string verb, Room *room, Actor *actor,
 								 Object *dobj, Object *iobj, Game *game) :

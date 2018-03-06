@@ -7,11 +7,13 @@
 class Stones : public Item {
 public:
 	std::string get_name();
+	std::string get_full_name();
 	std::string get_descr();
 	bool handle(Command command);
 
 private:
 	std::string name = "stones";
+	std::string full_name = "pile of stones";
 };
 
 #endif

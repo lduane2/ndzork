@@ -1,26 +1,26 @@
-#ifndef ITEM_CANDLE_HPP
-#define ITEM_CANDLE_HPP
+#ifndef ITEM_MATCHES_HPP
+#define ITEM_MATCHES_HPP
 
 #include "item.hpp"
 #include "../command.hpp"
 #include "../../include/actors/actor.hpp"
 #include "../../include/rooms/room.hpp"
 
-class Candle : public Item {
+class Matches : public Item {
 public:
 	std::string get_name();
+	std::string get_full_name();
 	std::string get_descr();
 	bool handle(Command command);
 
 private:
-	bool is_lit = false;
-	std::string name = "candle";
+	std::string name = "matches";
+	std::string full_name = "box of matches";
 
 	//Actions
 	bool take(Command command);
 	bool put(Command command);
-	bool light(Command command);
-	bool extinguish();
+	bool light();
 };
 
 #endif
