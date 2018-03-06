@@ -93,6 +93,7 @@ Map * NDZork::build_map() {
 }
 
 void NDZork::build_actions() {
+	
 }
 
 void NDZork::add_handler(std::string verb,

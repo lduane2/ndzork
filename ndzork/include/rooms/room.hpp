@@ -30,6 +30,8 @@ protected:
 	std::unordered_set<Item *> items;
 	std::unordered_set<Actor *> actors;
 	std::unordered_set<Room *> adj_rooms;
+
+	virtual bool look(Command c);
 };
 
 #endif
