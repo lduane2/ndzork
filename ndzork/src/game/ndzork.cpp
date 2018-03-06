@@ -20,6 +20,7 @@ NDZork::~NDZork() {
 void NDZork::loop() {
 	Parse p;
 	while(!ended) {
+		print(">");
 		p = parser.parse(get_input_line());
 
 		Object *dobj = str2obj(p.get_dobj());
@@ -98,6 +99,7 @@ void NDZork::build_actions() {
 	add_handler("light", &NDZork::light);
 	add_handler("take", &NDZork::take);
 	add_handler("put", &NDZork::put);
+	add_handler("inv", {"inv", "inventory"}, &NDZork::inv);
 }
 
 void NDZork::add_handler(std::string verb,

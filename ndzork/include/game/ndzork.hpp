@@ -27,6 +27,7 @@ private:
 	bool quit(Command command);
 	bool take(Command command);
 	bool put(Command command);
+	bool inv(Command command);
 
 	Map * build_map();
 

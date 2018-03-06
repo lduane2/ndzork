@@ -22,8 +22,10 @@ bool Candle::handle(Command c) {
 	if (c.get_dobj() == this) {
 		if 		(verb == "light"){
 		 	return light();
-		}  else if (verb == "take"){
+		} else if (verb == "take"){
 			return take(c);
+		} else if (verb == "put"){
+			return put(c);
 		}
 	}
 
@@ -41,6 +43,22 @@ bool Candle::take(Command c) {
 		actor->add_item(this);
 	}
 	return true;
+}
+
+bool Candle::put(Command c){
+	//check if you have the candle
+	Room * room = c.get_room();
+	Actor * actor = c.get_actor();
+	if(actor->check_item(this)){
+		//put the candle down
+		print("You put the candle down\n");
+		room->add_item(this);
+		actor->remove_item(this);
+		return true;
+	} else {
+		print("You don't have a candle to put down\n");
+		return true;
+	}
 }
 
 bool Candle::light() {
