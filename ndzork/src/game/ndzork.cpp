@@ -3,9 +3,12 @@
 #include "../../include/parse/parse.hpp"
 #include "../../include/game/gameio.hpp"
 
-NDZork::NDZork() : Game(nullptr,
-												nullptr),
-							 score(0), moves(0) {
+#include "../../include/actors/luke.hpp"
+#include "../../include/rooms/jesus_statue.hpp"
+
+NDZork::NDZork() : Game(new Jesus_Statue(),
+												new Luke()),
+									 score(0), moves(0) {
 	map = build_map();
 	parser = Parser(map);
 	build_actions();
@@ -93,8 +96,8 @@ void NDZork::build_actions() {
 }
 
 void NDZork::add_handler(std::string verb,
-											 std::initializer_list<std::string> synonyms,
-											 bool(NDZork::*handler)(Command command))
+												 std::initializer_list<std::string> synonyms,
+												 bool(NDZork::*handler)(Command command))
 {
 	verb2handler[verb] = handler;
 	parser.add_verb(verb);
@@ -105,7 +108,7 @@ void NDZork::add_handler(std::string verb,
 }
 
 void NDZork::add_handler(std::string verb,
-											bool(NDZork::*handler)(Command command))
+												 bool(NDZork::*handler)(Command command))
 {
 	add_handler(verb, {}, handler);
 }
