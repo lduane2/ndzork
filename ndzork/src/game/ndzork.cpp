@@ -103,6 +103,7 @@ void NDZork::build_actions() {
 	add_handler("put", &NDZork::put);
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
+	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll"}, &Zork::go);
 }
 
 void NDZork::add_handler(std::string verb,
