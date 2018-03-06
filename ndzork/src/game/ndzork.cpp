@@ -103,14 +103,14 @@ Map * NDZork::build_map() {
 }
 
 void NDZork::build_actions() {
-	add_handler("look", {"describe"}, &NDZork::look);
+	add_handler("look", {"describe", "examine"}, &NDZork::look);
 	add_handler("quit", {"q", "goodbye"}, &NDZork::quit);
 	add_handler("light", &NDZork::light);
 	add_handler("take", &NDZork::take);
-	add_handler("put", &NDZork::put);
+	add_handler("put", {"drop"},  &NDZork::put);
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
-	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll"}, &NDZork::go);
+	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll", "crawl", "moonwalk", "apparate", "fly", "materialize"}, &NDZork::go);
 }
 
 void NDZork::add_handler(std::string verb,
