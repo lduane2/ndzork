@@ -17,6 +17,9 @@ public:
 
 private:
 	std::unordered_set<Item *> items;
+
+protected:
+	virtual bool look(Command c);
 };
 
 #endif

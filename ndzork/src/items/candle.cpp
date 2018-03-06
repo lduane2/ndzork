@@ -12,7 +12,7 @@ std::string Candle::get_descr() {
 		return "The "+get_name()+" is unlit.";
 	}
 	else {
-		descr = "The "+get_name()+" is lit";
+		descr = "The "+get_name()+" is lit.";
 	}
 
 	return descr;
@@ -32,7 +32,7 @@ bool Candle::light() {
 	}
 	else {
 		is_lit = true;
-		print("The candle is lit.\n"); 
+		print("Lit the candle.\n"); 
 	}
 
 	return true;
