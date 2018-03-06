@@ -15,6 +15,7 @@ private:
 	std::string name = "candle";
 
 	//Actions
+	bool take(Command command);
 	bool light();
 };
 
