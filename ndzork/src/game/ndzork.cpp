@@ -92,12 +92,14 @@ Map * NDZork::build_map() {
 	Map *map = new Map();
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
-	
-	Room * mainCircle = new Main_Circle();
-	spawn_point->add_adj_room("south", mainCircle);
 
+	Room * jesus_statue = spawn_point;
+
+	// Formula for adding a new room to the map
+	Room * mainCircle = new Main_Circle();
 	map->add_room(mainCircle);
-	mainCircle->add_adj_room("north", spawn_point);
+	jesus_statue->add_adj_room("south", mainCircle);
+	mainCircle->add_adj_room("north", jesus_statue);
 
 	return map;
 }

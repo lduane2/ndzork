@@ -15,19 +15,17 @@ bool NDZork::light(Command c){
 }
 
 bool NDZork::go(Command c) {
-    if (c.get_dobj() == nullptr) {
-        print("Go Where?\n");
-        return true;
-
-    }
-    else {
-        auto rooms = player_location->get_dir_table();
-        
-        player_location =  rooms[c.get_dobj()->get_name()];         
-        print("You moved\n");
-        return true;
-    }
-    return false;
+	if (c.get_dobj() == nullptr) {
+		print("Go Where?\n");
+		return true;
+	}
+	else {
+		auto rooms = player_location->get_dir_table();
+		player_location =  rooms[c.get_dobj()->get_name()];
+		print("You moved\n");
+		return true;
+	}
+	return false;
 }
 
 bool NDZork::quit(Command /*c*/){

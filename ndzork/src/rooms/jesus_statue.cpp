@@ -9,8 +9,6 @@ Jesus_Statue::Jesus_Statue() {
 	add_item(new Stones());
 	//add_item(new Matches());
 	add_item(new Statue());
-
-	add_misc(new Misc("south"));
 }
 
 std::string Jesus_Statue::get_name() {

@@ -40,16 +40,15 @@ void Room::add_item(Item *item) {
 void Room::add_actor(Actor *actor) {
 	actors.insert(actor);
 }
-void Room::add_adj_room(Room *room) {
-	adj_rooms.insert(room);
-}
 
 void Room::add_adj_room(std::string dir, Room *room) {
+	adj_rooms.insert(room);
 	dir_table[dir] = room;
+	add_misc(new Misc(dir));
 }
 
 void Room::add_misc(Misc *misc) {
-    miscs.insert(misc);
+	miscs.insert(misc);
 }
 
 void Room::remove_item(Item *item) {
@@ -95,4 +94,3 @@ bool Room::look(Command c) {
 
 	return true;
 }
-

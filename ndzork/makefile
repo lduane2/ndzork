@@ -1,4 +1,4 @@
-CXX=g++ -std=gnu++11 -Wall -Wextra -Wfatal-errors
+CXX=g++ -std=gnu++11 -Wall -Wextra -Wpedantic -Wfatal-errors
 
 all: ndzork
 
