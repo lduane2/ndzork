@@ -1,13 +1,16 @@
-#include "../include/actors/luke.hpp"
+#include "../../include/actors/luke.hpp"
 
 Luke::Luke() {
-	// Needs to be implemented
 }
 
 std::string Luke::get_name() {
-	// Needs to be implemented
+	return name;
 }
 
 std::string Luke::get_descr() {
-	// Needs to be implemented
+	return "That's difficult unless your eyes are prehensile";
+}
+
+bool Luke::handle(Command c) {
+	return Actor::handle(c);
 }
