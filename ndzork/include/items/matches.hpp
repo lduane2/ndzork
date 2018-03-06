@@ -1,0 +1,24 @@
+#ifndef ITEM_MATCHES_HPP
+#define ITEM_MATCHES_HPP
+
+#include "item.hpp"
+#include "../command.hpp"
+#include "../../include/actors/actor.hpp"
+#include "../../include/rooms/room.hpp"
+
+class Matches : public Item {
+public:
+	std::string get_name();
+	std::string get_descr();
+	bool handle(Command command);
+
+private:
+	std::string name = "matches";
+
+	//Actions
+	bool take(Command command);
+	bool put(Command command);
+	bool light();
+};
+
+#endif
