@@ -22,8 +22,16 @@ std::unordered_set<Actor *> Room::get_actors() {
 	return actors;
 }
 
+std::unordered_set<Misc *> Room::get_miscs() {
+	return miscs;
+}
+
 std::unordered_set<Room *> Room::get_adj_rooms() {
 	return adj_rooms;
+}
+
+std::unordered_map<std::string, Room *> Room::get_dir_table() {
+	return dir_table;
 }
 
 void Room::add_item(Item *item) {
@@ -35,6 +43,15 @@ void Room::add_actor(Actor *actor) {
 void Room::add_adj_room(Room *room) {
 	adj_rooms.insert(room);
 }
+
+void Room::add_adj_room(std::string dir, Room *room) {
+	dir_table[dir] = room;
+}
+
+void Room::add_misc(Misc *misc) {
+    miscs.insert(misc);
+}
+
 void Room::remove_item(Item *item) {
 	items.erase(item);
 }

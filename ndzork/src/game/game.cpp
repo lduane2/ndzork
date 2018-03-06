@@ -20,6 +20,12 @@ Object * Game::str2obj(std::string s) {
 		}
 	}
 
+    for (auto misc : player_location->get_miscs()) {
+        if (misc->get_name() == s){
+            return misc;
+        }   
+    }
+
 	for (auto actor : player_location->get_actors()) {
 		if (actor->get_name() == s) {
 			return actor;

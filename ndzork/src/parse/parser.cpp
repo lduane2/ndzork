@@ -20,6 +20,10 @@ Parser::Parser(Map *map) {
 			add_item(item->get_name());
 		}
 
+		for (auto misc : room->get_miscs()) {
+            add_misc(misc->get_name());
+        }
+
 		// Get actor names from room
 		for (auto actor : room->get_actors()) {
 			add_actor(actor->get_name());
@@ -55,7 +59,11 @@ Parse Parser::parse(std::string input) {
 		else if (rooms.find(word) != rooms.end()) {
 			dobj = word;
 			break;
-		}
+		}       
+		else if (miscs.find(word) != miscs.end())  {
+            dobj = word;
+            break;
+        }
 	}
 
 	while (words >> word) {
@@ -97,4 +105,8 @@ void Parser::add_item(std::string item) {
 
 void Parser::add_room(std::string room) {
 	rooms.insert(room);
+}
+
+void Parser::add_misc(std::string misc) {
+    miscs.insert(misc);
 }

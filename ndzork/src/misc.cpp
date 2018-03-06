@@ -1,6 +1,6 @@
-#include "misc.hpp"
+#include "../include/misc.hpp"
 
-#include "gameio.hpp"
+#include "../include/game/gameio.hpp"
 
 Misc::~Misc() {
 	for (auto misc : get_miscs()) {

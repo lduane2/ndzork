@@ -90,6 +90,8 @@ Map * NDZork::build_map() {
 	Map *map = new Map();
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
+	
+
 	return map;
 }
 

@@ -56,8 +56,6 @@ void Zork::handle(Command c) {
 		return;
 	}
 
-
-
 	// Direct Object
 	if (c.get_dobj() && c.get_dobj()->handle(c)) {
 		c.get_room()->handle(c);

@@ -26,14 +26,9 @@ std::unordered_set<Misc *> Room::get_miscs() {
 	return miscs;
 }
 
-
-
-
 std::unordered_map<std::string, Room *> Room::get_dir_table() {
 	return dir_table;
 }
-
-
 
 void Room::add_item(Item *item) {
 	items.insert(item);

@@ -14,6 +14,22 @@ bool NDZork::light(Command c){
 	return false;
 }
 
+bool Zork::go(Command c) {
+    if (c.get_dobj() == nullptr) {
+        print("Go Where?\n");
+        return true;
+
+    }
+    else {
+        auto rooms = player_location->get_dir_table();
+        
+        player_location =  rooms[c.get_dobj()->get_name()];         
+        print("You moved\n");
+        return true;
+    }
+    return false;
+}
+
 bool NDZork::quit(Command /*c*/){
 	print("Do you wish to leave the game? (y/n): ");
 	std::string input(get_input_line());
