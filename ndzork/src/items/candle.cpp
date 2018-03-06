@@ -20,12 +20,14 @@ std::string Candle::get_descr() {
 bool Candle::handle(Command c) {
 	std::string verb(c.get_verb());
 	if (c.get_dobj() == this) {
-		if 		(verb == "light"){
+		if (verb == "light"){
 		 	return light(c);
 		} else if (verb == "take"){
 			return take(c);
 		} else if (verb == "put"){
 			return put(c);
+		} else if (verb == "extinguish"){
+			return extinguish();
 		}
 	}
 
@@ -43,6 +45,17 @@ bool Candle::take(Command c) {
 		actor->add_item(this);
 	}
 	return true;
+}
+
+bool Candle::extinguish(){
+	if(is_lit){
+		print("You extinguish the candle\n");
+		is_lit = false;
+		return true;
+	} else {
+		print("The candle is not lit\n");
+		return true;
+	}
 }
 
 bool Candle::put(Command c){

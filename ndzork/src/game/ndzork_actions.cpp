@@ -36,3 +36,7 @@ bool NDZork::put(Command /*c*/){
 bool NDZork::inv(Command /*c*/){
 	return false;
 }
+
+bool NDZork::extinguish(Command /*c*/){
+	return false;
+}

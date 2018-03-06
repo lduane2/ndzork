@@ -99,7 +99,8 @@ void NDZork::build_actions() {
 	add_handler("light", &NDZork::light);
 	add_handler("take", &NDZork::take);
 	add_handler("put", &NDZork::put);
-	add_handler("inv", {"inv", "inventory"}, &NDZork::inv);
+	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
+	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
 }
 
 void NDZork::add_handler(std::string verb,

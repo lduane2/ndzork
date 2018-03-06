@@ -20,6 +20,7 @@ private:
 	bool take(Command command);
 	bool put(Command command);
 	bool light(Command command);
+	bool extinguish();
 };
 
 #endif
