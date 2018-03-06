@@ -11,10 +11,20 @@ void Actor::add_item(Item *item) {
 	items.insert(item);
 }
 
-//checks if Actor has the item in inventory
+//checks if Actor has the item in inventory; item version
 bool Actor::check_item(Item *item){
 	for (auto it: items){
 		if (it == item){
+			return true;
+		}
+	}
+	return false;
+}
+
+//checks if Actor has the item in inventory; string version
+bool Actor::check_item(std::string item_name){
+	for(auto it: items){
+		if(it->get_name() == item_name){
 			return true;
 		}
 	}

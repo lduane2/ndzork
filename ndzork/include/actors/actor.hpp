@@ -15,6 +15,7 @@ public:
 	void add_item(Item *item);
 	void remove_item(Item *item);
 	bool check_item(Item *item);
+	bool check_item(std::string item_name);
 
 	virtual bool handle(Command c);
 

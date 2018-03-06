@@ -19,7 +19,7 @@ private:
 	//Actions
 	bool take(Command command);
 	bool put(Command command);
-	bool light();
+	bool light(Command command);
 };
 
 #endif

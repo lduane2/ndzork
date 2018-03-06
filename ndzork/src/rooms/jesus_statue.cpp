@@ -1,10 +1,12 @@
 #include "../../include/rooms/jesus_statue.hpp"
 #include "../../include/items/candle.hpp"
 #include "../../include/items/stones.hpp"
+#include "../../include/items/matches.hpp"
 
 Jesus_Statue::Jesus_Statue() {
 	add_item(new Candle());
 	add_item(new Stones());
+	add_item(new Matches());
 }
 
 std::string Jesus_Statue::get_name() {
