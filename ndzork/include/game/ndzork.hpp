@@ -21,6 +21,13 @@ private:
 	int max_score = 100;
 	int moves;
 
+        //actions in ndzork_actions.cpp
+        bool look(Command command);
+        bool light(Command command);
+        bool quit(Command command);
+        bool take(Command command);
+        bool put(Command command);
+
 	Map * build_map();
 
 	void build_actions();
