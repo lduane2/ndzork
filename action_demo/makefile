@@ -5,7 +5,7 @@ all: action_demo
 PARSER=../parser.o ../parse.o
 OBJECTS=../map.o ../gameio.o ../game.o ../object.o ../room.o ../item.o ../actor.o ../command.o
 GAME=zork.o zork_actions.o
-ITEMS=items/house.o items/mailbox.o items/leaflet.o items/jesusStatue.o
+ITEMS=items/house.o items/mailbox.o items/leaflet.o items/jesusStatue.o items/candle.o
 ACTORS=actors/adventurer.o
 ROOMS=rooms/west_of_house.o
 
