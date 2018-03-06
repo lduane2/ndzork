@@ -2,11 +2,15 @@
 
 #include "../items/mailbox.hpp"
 #include "../items/house.hpp"
+#include "../items/jesusStatue.hpp"
 #include "../actors/adventurer.hpp"
+
+
 
 West_Of_House::West_Of_House() {
 	add_item(new Mailbox());
 	add_item(new House());
+    add_item(new jesusStatue());
 }
 
 std::string West_Of_House::get_name() {

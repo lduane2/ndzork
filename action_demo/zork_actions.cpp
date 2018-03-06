@@ -36,3 +36,9 @@ bool Zork::quit(Command /*c*/) {
 	}
 	return true;
 }
+
+
+bool Zork::yell(Command /*c*/) {
+    print("YAAAAAARGGGGGHHH!\n");
+    return true;
+}

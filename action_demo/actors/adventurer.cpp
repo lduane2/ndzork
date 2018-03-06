@@ -10,3 +10,5 @@ std::string Adventurer::get_name() {
 std::string Adventurer::get_descr() {
 	return "That's difficult unless your eyes are prehensile";
 }
+
+
