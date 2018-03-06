@@ -23,7 +23,6 @@ bool Candle::handle(Command c) {
 	if (c.get_dobj() == this) {
 		if 		(verb == "light") return light();
 	}
-
 	return Item::handle(c);
 }
 
