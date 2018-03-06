@@ -93,7 +93,11 @@ Map * NDZork::build_map() {
 }
 
 void NDZork::build_actions() {
-	
+	add_handler("look", {"describe"}, &NDZork::look);
+	add_handler("quit", {"q", "goodbye"}, &NDZork::quit);
+	add_handler("light", &NDZork::light);
+	add_handler("take", &NDZork::take);
+	add_handler("put", &NDZork::put);
 }
 
 void NDZork::add_handler(std::string verb,
