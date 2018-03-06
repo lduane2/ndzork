@@ -20,3 +20,8 @@ Bui encourages us to have some game literature
         front page: gives description of the game, context, the story and base instructions
         back page: how to beat the game
 
+Would Like to Haves
+-------------------
+
+Jenkins actor
+text file that we can pipe into the executable that wins the game
