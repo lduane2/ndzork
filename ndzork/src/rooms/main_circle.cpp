@@ -1,9 +1,9 @@
 #include "../../include/rooms/main_circle.hpp"
-#include "../../include/items/matches.hpp"
+#include "../../include/items/bushes.hpp"
 #include "../../include/misc.hpp"
 
 Main_Circle::Main_Circle() {
-    add_item(new Matches());
+	add_item(new Bushes());
 }
 
 std::string Main_Circle::get_name() {

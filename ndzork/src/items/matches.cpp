@@ -15,6 +15,10 @@ std::string Matches::get_descr() {
 	return descr;
 }
 
+bool Matches::is_takeable() {
+	return true;
+}
+
 bool Matches::handle(Command c) {
 	std::string verb(c.get_verb());
 	if (c.get_dobj() == this) {

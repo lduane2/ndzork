@@ -17,6 +17,14 @@ std::string Candle::get_descr() {
 	return descr;
 }
 
+bool Candle::is_takeable() {
+	if (is_lit) {
+		print("The candle is burning and too dangerous to touch!\n");
+		return false;
+	}
+	return true;
+}
+
 bool Candle::handle(Command c) {
 	std::string verb(c.get_verb());
 	if (c.get_dobj() == this) {
@@ -32,19 +40,6 @@ bool Candle::handle(Command c) {
 	}
 
 	return Item::handle(c);
-}
-
-bool Candle::take(Command c) {
-	if (is_lit){
-		print("You can't pick up a lit candle!\n");
-	} else {
-		print("You took the candle\n");
-		Room * room = c.get_room();
-		room->remove_item(this);
-		Actor * actor = c.get_actor();
-		actor->add_item(this);
-	}
-	return true;
 }
 
 bool Candle::extinguish(){

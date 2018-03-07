@@ -82,17 +82,11 @@ bool Room::look(Command c) {
 	print(get_descr(), "\n");
 	for (auto actor : get_actors()) {
 		if (actor == c.get_actor()) continue;
-		print("There is a ", actor->get_full_name(), " here.\n");
+		print("  There is a ", actor->get_full_name(), " here.\n");
 	}
 
 	for (auto item : get_items()) {
-		print("There is a ", item->get_full_name(), " here.\n");
-		if (!item->get_items().empty()) {
-			print("The ", item->get_full_name(), " contains:\n");
-			for (auto inner_item : item->get_items()) {
-				print("  A ", inner_item->get_full_name(), "\n");
-			}
-		}
+		print("  There is a ", item->get_full_name(), " here.\n");
 	}
 	print("\n");
 
