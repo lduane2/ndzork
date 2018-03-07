@@ -6,7 +6,10 @@
 #include "../../include/actors/luke.hpp"
 #include "../../include/rooms/jesus_statue.hpp"
 #include "../../include/rooms/main_circle.hpp"
+#include "../../include/actors/jank.hpp"
 
+
+#include <random>
 
 NDZork::NDZork() : Game(new Jesus_Statue(),
 												new Luke()),
@@ -14,6 +17,7 @@ NDZork::NDZork() : Game(new Jesus_Statue(),
 	map = build_map();
 	parser = Parser(map);
 	build_actions();
+    move_number = 0;
 }
 
 NDZork::~NDZork() {
@@ -98,6 +102,10 @@ Map * NDZork::build_map() {
 
 	map->add_room(mainCircle);
 	mainCircle->add_adj_room("north", spawn_point);
+    
+    jenkins = new Jank();    
+    jenkins_location = mainCircle;
+    mainCircle->add_actor(jenkins);
 
 	return map;
 }
@@ -111,6 +119,7 @@ void NDZork::build_actions() {
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
 	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll", "crawl", "moonwalk", "apparate", "fly", "materialize"}, &NDZork::go);
+    add_handler("shake", &NDZork::shake);
 }
 
 void NDZork::add_handler(std::string verb,
@@ -131,4 +140,27 @@ void NDZork::add_handler(std::string verb,
 }
 
 void NDZork::demons() {
+    /// jenkins
+    move_number++;
+    //jenkins->demon();
+    if ((move_number % 4) ==1) {
+        auto dir_map = jenkins_location->get_dir_table();
+        auto room = dir_map.begin();
+        std::advance( room, (rand() %dir_map.size()) );
+        jenkins_location->remove_actor(jenkins);
+        if (jenkins_location ==  player_location) {
+            print("jenkins quickly ducks out, leaving you behind\n");
+        }
+        jenkins_location=room->second;
+        jenkins_location->add_actor(jenkins);
+        if (jenkins_location ==  player_location) {
+            print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
+        }
+    }
+    
+    if (jenkins_location == player_location)
+        {
+            print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
+        }
+
 }

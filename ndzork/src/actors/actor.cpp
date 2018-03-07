@@ -56,5 +56,10 @@ bool Actor::handle(Command c) {
 	} else {
 		return Object::handle(c);
 	}
+/*    if (verb == "look"){
+        print(this->get_description());
+        return;
+    }
+*/
 }
 

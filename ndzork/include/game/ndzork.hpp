@@ -8,12 +8,17 @@
 #include <unordered_map>
 #include <initializer_list>
 
+#include "../actors/jank.hpp"
+
 class NDZork : public Game {
 public:
 	NDZork();
 	~NDZork();
 	void loop();
 private:
+    Jank * jenkins;
+    Room * jenkins_location;
+    
 	void handle(Command command);
 	void demons();
 	bool ended = false;
@@ -30,6 +35,7 @@ private:
 	bool inv(Command command);
 	bool go(Command command);
 	bool extinguish(Command command);
+    bool shake(Command command);
 
 	Map * build_map();
 

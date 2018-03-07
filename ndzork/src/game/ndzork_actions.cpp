@@ -35,12 +35,17 @@ bool NDZork::quit(Command /*c*/){
 	std::string input(get_input_line());
 	if((input[0] == 'y' || input[0] == 'Y') && (input.length() == 1)){
 		ended = true;
-	} else {
+	    print("ending the game\n");
+    } else {
 		print("Ok.\n");
 	}
 	return true;
 }
 
+
+bool NDZork::shake(Command /*c*/){
+    return false;
+}
 bool NDZork::take(Command /*c*/){
 	return false;
 }
