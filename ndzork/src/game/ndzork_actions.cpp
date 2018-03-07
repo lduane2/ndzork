@@ -25,6 +25,7 @@ bool NDZork::go(Command c) {
 		if (dir_lookup != dir_table.end()) {
 			player_location = (*dir_lookup).second;
 			print("You moved\n");
+            player_location->look(c); 
 			return true;
 		}
 		else {

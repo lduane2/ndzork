@@ -29,7 +29,7 @@ public:
 	void remove_adj_room(Room *room);
 
 	virtual bool handle(Command c);
-
+	virtual bool look(Command c);
 protected:
 	std::unordered_set<Item *> items;
 	std::unordered_set<Actor *> actors;
@@ -37,7 +37,6 @@ protected:
 	std::unordered_set<Misc *> miscs;
 	std::unordered_map<std::string,Room *> dir_table;
 
-	virtual bool look(Command c);
 };
 
 #endif

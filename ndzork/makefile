@@ -7,7 +7,7 @@ OBJECTS=src/map.o src/game/gameio.o src/game/game.o src/object.o src/rooms/room.
 GAME=src/game/ndzork.o src/game/ndzork_actions.o
 ACTORS=src/actors/luke.o  src/actors/jank.o
 ITEMS=src/items/candle.o src/items/stones.o src/items/matches.o src/items/statue.o src/items/bushes.o
-ROOMS=src/rooms/jesus_statue.o src/rooms/main_circle.o
+ROOMS=src/rooms/jesus_statue.o src/rooms/main_circle.o src/rooms/golden_dome.o
 
 ndzork: main.o $(OBJECTS) $(GAME) $(ROOMS) $(ITEMS) $(ACTORS) $(PARSER)
 	$(CXX) $^ -o $@

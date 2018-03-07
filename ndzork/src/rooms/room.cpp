@@ -78,12 +78,11 @@ bool Room::handle(Command c) {
 }
 
 bool Room::look(Command c) {
-    if (c.get_dobj() == nullptr) {
     	print(get_name(), "\n");
 	    print(get_descr(), "\n");
 	    for (auto actor : get_actors()) {
 		    if (actor == c.get_actor()) continue;
-		    print("There is a ", actor->get_full_name(), " here.\n");
+		    print("You can see ", actor->get_full_name(), " here.\n");
     	}
     
     	for (auto item : get_items()) {
@@ -96,6 +95,5 @@ bool Room::look(Command c) {
     		}
     	}
     	print("\n");
-    }
 	return true;
 }

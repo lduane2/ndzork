@@ -6,6 +6,7 @@
 #include "../../include/actors/luke.hpp"
 #include "../../include/rooms/jesus_statue.hpp"
 #include "../../include/rooms/main_circle.hpp"
+#include "../../include/rooms/golden_dome.hpp"
 #include "../../include/actors/jank.hpp"
 
 
@@ -108,6 +109,11 @@ Map * NDZork::build_map() {
     mainCircle->add_actor(jenkins);
 	jesus_statue->add_adj_room("south", mainCircle);
 	mainCircle->add_adj_room("north", jesus_statue);
+
+    Room * golden_dome = new Golden_Dome();
+    map->add_room(golden_dome);
+    jesus_statue->add_adj_room("north", golden_dome);
+    golden_dome->add_adj_room("south", jesus_statue);
 
 	return map;
 }
