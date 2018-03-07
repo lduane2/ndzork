@@ -11,11 +11,10 @@ public:
 	std::string get_name();
 	std::string get_descr();
 private:
-	std::string name = "Main";
-	std::string description = "You are standing in an green space surrounded by a traffic circle.  Taxis and Ubers occassionaly come and go, maing this a peaceful,yet busy, area.";
+	std::string name = "Main Circle";
+	std::string description = "You are standing in a green space surrounded by a traffic circle. Taxis and Ubers occassionaly come and go, making this a peaceful, yet busy, area.";
 
 	bool handle(Command c);
-    
 };
 
 #endif

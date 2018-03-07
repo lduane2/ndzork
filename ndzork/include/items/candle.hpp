@@ -10,6 +10,7 @@ class Candle : public Item {
 public:
 	std::string get_name();
 	std::string get_descr();
+	bool is_takeable();
 	bool handle(Command command);
 
 private:
@@ -17,7 +18,6 @@ private:
 	std::string name = "candle";
 
 	//Actions
-	bool take(Command command);
 	bool put(Command command);
 	bool light(Command command);
 	bool extinguish();

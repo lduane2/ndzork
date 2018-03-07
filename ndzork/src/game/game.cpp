@@ -18,13 +18,18 @@ Object * Game::str2obj(std::string s) {
 		if (item->get_name() == s) {
 			return item;
 		}
+		for (auto inner_item : item->get_items()) {
+			if (inner_item->get_name() == s) {
+				return inner_item;
+			}
+		}
 	}
 
-    for (auto misc : player_location->get_miscs()) {
-        if (misc->get_name() == s){
-            return misc;
-        }   
-    }
+	for (auto misc : player_location->get_miscs()) {
+		if (misc->get_name() == s) {
+			return misc;
+		}
+	}
 
 	for (auto actor : player_location->get_actors()) {
 		if (actor->get_name() == s) {
@@ -33,6 +38,11 @@ Object * Game::str2obj(std::string s) {
 		for (auto item : actor->get_items()) {
 			if (item->get_name() == s) {
 				return item;
+			}
+			for (auto inner_item : item->get_items()) {
+				if (inner_item->get_name() == s) {
+					return inner_item;
+				}
 			}
 		}
 	}

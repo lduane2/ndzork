@@ -3,7 +3,6 @@
 #include "../../include/items/item.hpp"
 #include "../../include/actors/actor.hpp"
 
-#include <iostream>
 #include <string>
 #include <sstream>
 
@@ -18,11 +17,15 @@ Parser::Parser(Map *map) {
 		// Get item names from room
 		for (auto item : room->get_items()) {
 			add_item(item->get_name());
+			for (auto inner_item : item->get_items()) {
+				add_item(inner_item->get_name());
+			}
 		}
 
+		// Get Miscs (e.g. directions) from room
 		for (auto misc : room->get_miscs()) {
-            add_misc(misc->get_name());
-        }
+			add_misc(misc->get_name());
+		}
 
 		// Get actor names from room
 		for (auto actor : room->get_actors()) {
@@ -30,6 +33,9 @@ Parser::Parser(Map *map) {
 			// Get item names from actor
 			for (auto item : actor->get_items()) {
 				add_item(item->get_name());
+				for (auto inner_item : item->get_items()) {
+					add_item(inner_item->get_name());
+				}
 			}
 		}
 	}

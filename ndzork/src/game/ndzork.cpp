@@ -40,13 +40,13 @@ void NDZork::loop() {
 
 void NDZork::handle(Command c) {
 	// Logging. Delete before turning in
-	// Object *dobj = c.get_dobj();
-	// Object *iobj = c.get_iobj();
-	// error("verb  = ", c.get_verb(), "\n");
-	// error("actor = ", c.get_actor()->get_name(), "\n");
-	// error("room  = ", c.get_room()->get_name(), "\n");
-	// error("dobj  = ", (dobj) ? dobj->get_name() : "nullptr", "\n");
-	// error("iobj  = ", (iobj) ? iobj->get_name() : "nullptr", "\n");
+	Object *dobj = c.get_dobj();
+	Object *iobj = c.get_iobj();
+	error("verb  = ", c.get_verb(), "\n");
+	error("actor = ", c.get_actor()->get_name(), "\n");
+	error("room  = ", c.get_room()->get_name(), "\n");
+	error("dobj  = ", (dobj) ? dobj->get_name() : "nullptr", "\n");
+	error("iobj  = ", (iobj) ? iobj->get_name() : "nullptr", "\n");
 
 	// Actor
 	if (c.get_actor()->handle(c)) {
@@ -96,16 +96,18 @@ Map * NDZork::build_map() {
 	Map *map = new Map();
 	spawn_point->add_actor(player);
 	map->add_room(spawn_point);
-	
-	Room * mainCircle = new Main_Circle();
-	spawn_point->add_adj_room("south", mainCircle);
 
+	Room * jesus_statue = spawn_point;
+
+	// Formula for adding a new room to the map
+	Room * mainCircle = new Main_Circle();
 	map->add_room(mainCircle);
-	mainCircle->add_adj_room("north", spawn_point);
     
     jenkins = new Jank();    
     jenkins_location = mainCircle;
     mainCircle->add_actor(jenkins);
+	jesus_statue->add_adj_room("south", mainCircle);
+	mainCircle->add_adj_room("north", jesus_statue);
 
 	return map;
 }
