@@ -1,7 +1,5 @@
 #include "../include/object.hpp"
 
-#include <iostream>
-
 Object::~Object() {
 }
 
@@ -22,11 +20,9 @@ std::unordered_set<Item *> Object::get_items() {
 }
 
 void Object::add_item(Item *item) {
-	std::cout << "log: " << get_name() << " is adding item " << ((Object *)item)->get_name() << std::endl;
 	items.insert(item);
 }
 
 void Object::remove_item(Item *item) {
-	std::cout << "log: " << get_name() << " is removing item " << ((Object *)item)->get_name() << std::endl;
 	items.erase(item);
 }
