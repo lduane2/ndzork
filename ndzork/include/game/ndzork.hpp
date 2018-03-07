@@ -15,6 +15,8 @@ public:
 	NDZork();
 	~NDZork();
 	void loop();
+	void lose_game();
+	void win_game();
 private:
     Jank * jenkins;
     Room * jenkins_location;
@@ -35,7 +37,9 @@ private:
 	bool inv(Command command);
 	bool go(Command command);
 	bool extinguish(Command command);
-    bool shake(Command command);
+	bool shake(Command command);
+	bool touch(Command command);
+	bool climb(Command command);
 
 	Map * build_map();
 

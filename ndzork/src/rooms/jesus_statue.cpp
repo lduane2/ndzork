@@ -3,11 +3,10 @@
 #include "../../include/items/stones.hpp"
 #include "../../include/items/matches.hpp"
 #include "../../include/items/statue.hpp"
-#include "../../include/actors/Jank.hpp"
+#include "../../include/actors/jank.hpp"
+
 Jesus_Statue::Jesus_Statue() {
-	add_item(new Candle());
 	add_item(new Stones());
-	//add_item(new Matches());
 	add_item(new Statue());
 }
 

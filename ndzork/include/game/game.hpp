@@ -15,7 +15,8 @@ public:
 	std::string get_name();
 	virtual ~Game();
 	virtual void loop() = 0;
-
+	virtual void lose_game() = 0;
+	virtual void win_game() = 0;
 protected:
 	Room *spawn_point;
 	Actor *player;

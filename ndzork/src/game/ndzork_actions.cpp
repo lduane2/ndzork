@@ -25,7 +25,7 @@ bool NDZork::go(Command c) {
 		if (dir_lookup != dir_table.end()) {
 			player_location = (*dir_lookup).second;
 			print("You moved\n");
-            player_location->look(c); 
+			player_location->look(c);
 			return true;
 		}
 		else {
@@ -40,10 +40,10 @@ bool NDZork::go(Command c) {
 bool NDZork::quit(Command /*c*/){
 	print("Do you wish to leave the game? (y/n): ");
 	std::string input(get_input_line());
-	if((input[0] == 'y' || input[0] == 'Y') && (input.length() == 1)){
-		ended = true;
-	    print("ending the game\n");
-    } else {
+	if ((input[0] == 'y' || input[0] == 'Y') && (input.length() == 1)) {
+		lose_game();
+	}
+	else {
 		print("Ok.\n");
 	}
 	return true;
@@ -67,4 +67,13 @@ bool NDZork::inv(Command /*c*/){
 
 bool NDZork::extinguish(Command /*c*/){
 	return false;
+}
+
+bool NDZork::climb(Command /*c*/) {
+	return false;
+}
+
+bool NDZork::touch(Command /*c*/) {
+	print("It feels exactly as you would expect.\n");
+	return true;
 }
