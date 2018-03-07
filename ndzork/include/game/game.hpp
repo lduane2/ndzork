@@ -24,7 +24,7 @@ protected:
 	Room *player_location;
 	Parser parser;
 
-    int move_number = 0;
+	int move_number = 0;
 	virtual Map * build_map() = 0;
 	virtual void build_actions() = 0;
 

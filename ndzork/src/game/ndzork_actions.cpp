@@ -23,8 +23,10 @@ bool NDZork::go(Command c) {
 		auto dir_table = player_location->get_dir_table();
 		auto dir_lookup = dir_table.find(c.get_dobj()->get_name());
 		if (dir_lookup != dir_table.end()) {
-			player_location = (*dir_lookup).second;
-			print("You moved\n");
+			Room *new_location = (*dir_lookup).second;
+			player_location->remove_actor(player);
+			player_location = new_location;
+			player_location->add_actor(player);
 			player_location->look(c);
 			return true;
 		}

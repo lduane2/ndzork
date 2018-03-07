@@ -10,6 +10,7 @@
 #include "../../include/rooms/main_circle.hpp"
 #include "../../include/rooms/god_quad.hpp"
 #include "../../include/rooms/golden_dome.hpp"
+#include "../../include/rooms/grotto.hpp"
 
 #include <random>
 
@@ -30,13 +31,14 @@ void NDZork::lose_game() {
 }
 
 void NDZork::win_game() {
-	ended = true;
+	Golden_Dome *golden_dome = static_cast<Golden_Dome *>(map->find_room("The Golden Dome"));
+	golden_dome->remove_permacloud();
 }
 
 void NDZork::loop() {
 	Parse p;
 	while(!ended) {
-		print(">");
+		print("\n>");
 		p = parser.parse(get_input_line());
 
 		Object *dobj = str2obj(p.get_dobj());
@@ -60,21 +62,21 @@ void NDZork::handle(Command c) {
 
 	// Actor
 	if (c.get_actor()->handle(c)) {
-		demons();
+		//demons();
 		return;
 	}
 
 	// Indirect Object
 	if (c.get_iobj() && c.get_iobj()->handle(c)) {
 		c.get_room()->handle(c);
-		demons();
+		//demons();
 		return;
 	}
 
 	// Direct Object
 	if (c.get_dobj() && c.get_dobj()->handle(c)) {
 		c.get_room()->handle(c);
-		demons();
+		//demons();
 		return;
 	}
 
@@ -84,19 +86,19 @@ void NDZork::handle(Command c) {
 		auto handler = (*verb_lookup).second;
 		if ((this->*handler)(c)) {
 			c.get_room()->handle(c);
-			demons();
+			//demons();
 			return;
 		}
 	}
 
 	// Room
 	if (c.get_room()->handle(c)) {
-		demons();
+		//demons();
 		return;
 	}
 
 	// Background Tasks
-	demons();
+	//demons();
 
 	// Nobody handled it completely
 	print("I don't know how to do that\n");
@@ -129,6 +131,11 @@ Map * NDZork::build_map() {
 	god_quad->add_adj_room("north", golden_dome);
 	golden_dome->add_adj_room("south", god_quad);
 
+	Room *grotto = new Grotto();
+	map->add_room(grotto);
+	golden_dome->add_adj_room("west", grotto);
+	grotto->add_adj_room("east", golden_dome);
+
 	return map;
 }
 
@@ -137,7 +144,7 @@ void NDZork::build_actions() {
 	add_handler("quit", {"q", "goodbye"}, &NDZork::quit);
 	add_handler("light", &NDZork::light);
 	add_handler("take", &NDZork::take);
-	add_handler("put", {"drop"},  &NDZork::put);
+	add_handler("put", {"place","drop"},  &NDZork::put);
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
 	add_handler("go", { "travel", "walk", "run", "dance", "slither", "shimmy", "move", "logroll", "crawl", "moonwalk", "apparate", "fly", "materialize"}, &NDZork::go);

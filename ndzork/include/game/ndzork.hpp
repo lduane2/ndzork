@@ -18,9 +18,9 @@ public:
 	void lose_game();
 	void win_game();
 private:
-    Jank * jenkins;
-    Room * jenkins_location;
-    
+	Jank * jenkins;
+	Room * jenkins_location;
+
 	void handle(Command command);
 	void demons();
 	bool ended = false;

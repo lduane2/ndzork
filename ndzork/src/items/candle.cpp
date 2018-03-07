@@ -7,7 +7,7 @@ std::string Candle::get_name() {
 
 std::string Candle::get_descr() {
 	std::string descr;
-	if (!is_lit) {
+	if (!is_lit()) {
 		return "The "+get_name()+" is unlit.";
 	}
 	else {
@@ -18,11 +18,15 @@ std::string Candle::get_descr() {
 }
 
 bool Candle::is_takeable() {
-	if (is_lit) {
+	if (is_lit()) {
 		print("The candle is burning and too dangerous to touch!\n");
 		return false;
 	}
 	return true;
+}
+
+bool Candle::is_lit() {
+	return lit;
 }
 
 bool Candle::handle(Command c) {
@@ -43,9 +47,9 @@ bool Candle::handle(Command c) {
 }
 
 bool Candle::extinguish(){
-	if(is_lit){
+	if(is_lit()){
 		print("You extinguish the candle\n");
-		is_lit = false;
+		lit = false;
 		return true;
 	} else {
 		print("The candle is not lit\n");
@@ -79,13 +83,13 @@ bool Candle::light(Command c) {
 	} else if (iobj->get_name() == "matches"){
 		if(actor->check_item(iobj->get_name())){ //actor has matches
 			//lighting the candle
-			if (is_lit) {
+			if (is_lit()) {
 				print("The candle is already lit.\n");
 				return true;
 			}
 			else {
-				is_lit = true;
-				print("Lit the candle.\n"); 
+				lit = true;
+				print("Lit the candle.\n");
 				return true;
 			}
 		} else {

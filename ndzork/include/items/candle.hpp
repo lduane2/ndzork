@@ -12,9 +12,9 @@ public:
 	std::string get_descr();
 	bool is_takeable();
 	bool handle(Command command);
-
+	bool is_lit();
 private:
-	bool is_lit = false;
+	bool lit = false;
 	std::string name = "candle";
 
 	//Actions
