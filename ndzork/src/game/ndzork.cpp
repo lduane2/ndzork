@@ -11,6 +11,7 @@
 #include "../../include/rooms/god_quad.hpp"
 #include "../../include/rooms/golden_dome.hpp"
 #include "../../include/rooms/grotto.hpp"
+#include "../../include/rooms/la_fun.hpp"
 
 #include <random>
 
@@ -20,7 +21,7 @@ NDZork::NDZork() : Game(new Jesus_Statue(),
 	map = build_map();
 	parser = Parser(map);
 	build_actions();
-    move_number = 0;
+	move_number = 0;
 }
 
 NDZork::~NDZork() {
@@ -33,6 +34,9 @@ void NDZork::lose_game() {
 void NDZork::win_game() {
 	Golden_Dome *golden_dome = static_cast<Golden_Dome *>(map->find_room("The Golden Dome"));
 	golden_dome->remove_permacloud();
+
+	La_Fun *la_fun = static_cast<La_Fun *>(map->find_room("La Fun"));
+	la_fun->remove_permacloud();
 }
 
 void NDZork::loop() {
@@ -135,6 +139,11 @@ Map * NDZork::build_map() {
 	map->add_room(grotto);
 	golden_dome->add_adj_room("west", grotto);
 	grotto->add_adj_room("east", golden_dome);
+
+	Room *la_fun = new La_Fun();
+	map->add_room(la_fun);
+	golden_dome->add_adj_room("east", la_fun);
+	la_fun->add_adj_room("west", golden_dome);
 
 	return map;
 }

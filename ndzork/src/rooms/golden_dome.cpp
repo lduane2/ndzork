@@ -13,13 +13,15 @@ std::string Golden_Dome::get_name() {
 }
 
 std::string Golden_Dome::get_descr() {
-	std::string description;
+	std::string description =	"Before you lies the master of your fate: the University of Notre Dame administration building. Adorning the top is an enormous golden dome; the Jewel of South Bend.";
 	if (permacloud) {
-		description = "Before you lies the master of your fate: the University of Notre Dame administration building. Adorning the top is an enormous golden dome; the Jewel of South Bend. Since it is cloudy, the dome doesnt look all that shiny. From the east floats a vague smell of food that you cannot quite specify. To the west there's a hint of smoke in the air.";
+		description += " Since it is cloudy, the dome doesnt look all that shiny.";
 	}
 	else {
-		description = "Before you lies the master of your fate: the University of Notre Dame administration building. Adorning the top is an enormous golden dome; the Jewel of South Bend. The permacloud has been lifted and the dome blazes forth with unparalleled glory. From the east floats a vague smell of food that you cannot quite specify. To the west there's a hint of smoke in the air.";
+		description += " The permacloud has been lifted and the dome blazes forth with unparalleled glory.";
 	}
+	description +=  " From the east floats a vague smell of food that you cannot quite specify. To the west there's a hint of smoke in the air.";
+
 	return description;
 }
 
