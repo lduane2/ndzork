@@ -87,6 +87,5 @@ bool Room::look(Command c) {
 		/////// 	}
 		/////// }
 	}
-	print("\n");
 	return true;
 }
