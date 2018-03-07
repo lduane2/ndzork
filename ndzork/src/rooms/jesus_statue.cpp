@@ -3,7 +3,7 @@
 #include "../../include/items/stones.hpp"
 #include "../../include/items/matches.hpp"
 #include "../../include/items/statue.hpp"
-#include "../../include/actors/jank.hpp"
+//#include "../../include/actors/jank.hpp"
 
 Jesus_Statue::Jesus_Statue() {
 	add_item(new Stones());

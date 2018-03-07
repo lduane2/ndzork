@@ -6,7 +6,6 @@
 #include "../../include/items/candle.hpp"
 
 #include <string>
-#include <iostream>
 
 std::string Cave::get_name() {
 	return name;
@@ -20,6 +19,10 @@ bool Cave::is_takeable() {
 	return false;
 }
 
+bool Cave::can_contain_items() {
+	return true;
+}
+
 bool Cave::handle(Command c) {
 	std::string verb = c.get_verb();
 	if (c.get_iobj() == this) {
@@ -30,8 +33,9 @@ bool Cave::handle(Command c) {
 				return true;
 			}
 
+			Item::put(c);
+
 			Candle *candle = static_cast<Candle *>(dobj);
-			add_item(candle);
 			if (!candle->is_lit()) {
 				print("You placed the unlit candle in the cave. It was a disappointing experience for everyone nearby.\n");
 			}

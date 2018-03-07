@@ -2,31 +2,18 @@
 #include "../../include/rooms/room.hpp"
 #include "../../include/game/gameio.hpp"
 
-#include <iostream>
-
 Item::~Item() {
 	for (auto item : get_items()) {
 		delete item;
 	}
 }
 
-std::unordered_set<Item *> Item::get_items() {
-	return items;
-}
-
-void Item::add_item(Item *item) {
-	items.insert(item);
-}
-
-void Item::remove_item(Item *item) {
-	items.erase(item);
-}
-
 bool Item::handle(Command c) {
 	std::string verb = c.get_verb();
 	if (c.get_dobj() == this) {
 		if (verb == "look") return look(c);
-		if (verb == "take") return take(c);
+		else if (verb == "take") return take(c);
+		else if (verb == "put") return put(c);
 	}
 
 	return Object::handle(c);
@@ -41,7 +28,6 @@ bool Item::look(Command /*c*/) {
 }
 
 bool Item::take(Command c) {
-	std::cout << "item take" << std::endl;
 	// Sanity check
 	if (!is_takeable()) {
 		print("You cannot take that\n");
@@ -66,5 +52,34 @@ bool Item::take(Command c) {
 	// Move the item
 	c.get_actor()->add_item(this);
 	print("You took the ", this->get_full_name(), "\n");
+	return true;
+}
+
+bool Item::put(Command c) {
+	Item *dobj = static_cast<Item *>(c.get_dobj());
+	if (dobj == nullptr) {
+		print("Put what? And put it where?\n");
+		return true;
+	}
+
+	// If an indirect object is not given, assume dropping the item on
+	// the floor (i.e. give to the room)
+	Object *iobj = c.get_iobj();
+	if (c.get_iobj() == nullptr) {
+		iobj = c.get_room();
+	}
+
+	if (!iobj->can_contain_items()) {
+		print("You cannot put the ", dobj->get_full_name(), " in the ", iobj->get_full_name(), "\n");
+		return true;
+	}
+
+	if (!c.get_actor()->check_item(dobj)) {
+		print("How can you do anything with that when you do not have it?\n");
+		return true;
+	}
+
+	c.get_actor()->remove_item(dobj);
+	iobj->add_item(dobj);
 	return true;
 }

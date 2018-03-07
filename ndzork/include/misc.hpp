@@ -4,23 +4,26 @@
 #include "command.hpp"
 #include "object.hpp"
 
+#include <string>
 #include <unordered_set>
 #include <unordered_map>
 
 class Misc : public Object {
 public:
-    Misc(std::string input){ name = input;};
-	virtual ~Misc();
- 	std::unordered_set<Misc *> get_miscs();
+	Misc(std::string name);
+	~Misc();
+
+	std::string get_name();
+	std::string get_descr();
+
 	void add_misc(Misc *misc);
 	void remove_misc(Misc *misc);
-    std::string name;
-	virtual bool handle(Command command);
-    
-    virtual std::string get_name(){return name;};
-    virtual std::string get_descr(){return "How can I possibly do that?";};
+ 	std::unordered_set<Misc *> get_miscs();
+
+	bool handle(Command command);
 
 private:
+	std::string name;
 	std::unordered_set<Misc *> miscs;
 
 

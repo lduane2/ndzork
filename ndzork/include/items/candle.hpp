@@ -18,7 +18,6 @@ private:
 	std::string name = "candle";
 
 	//Actions
-	bool put(Command command);
 	bool light(Command command);
 	bool extinguish();
 };

@@ -22,6 +22,10 @@ bool Bushes::is_takeable() {
 	return false;
 }
 
+bool Bushes::can_contain_items() {
+	return true;
+}
+
 bool Bushes::handle(Command c) {
 	std::string verb = c.get_verb();
 	if (c.get_dobj() == this) {

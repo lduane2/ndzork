@@ -32,15 +32,8 @@ bool Candle::is_lit() {
 bool Candle::handle(Command c) {
 	std::string verb(c.get_verb());
 	if (c.get_dobj() == this) {
-		if (verb == "light"){
-		 	return light(c);
-		} else if (verb == "take"){
-			return take(c);
-		} else if (verb == "put"){
-			return put(c);
-		} else if (verb == "extinguish"){
-			return extinguish();
-		}
+		if (verb == "light") return light(c);
+		else if (verb == "extinguish") return extinguish();
 	}
 
 	return Item::handle(c);
@@ -53,22 +46,6 @@ bool Candle::extinguish(){
 		return true;
 	} else {
 		print("The candle is not lit\n");
-		return true;
-	}
-}
-
-bool Candle::put(Command c){
-	//check if you have the candle
-	Room * room = c.get_room();
-	Actor * actor = c.get_actor();
-	if(actor->check_item(this)){
-		//put the candle down
-		print("You put the candle down\n");
-		room->add_item(this);
-		actor->remove_item(this);
-		return true;
-	} else {
-		print("You don't have a candle to put down\n");
 		return true;
 	}
 }

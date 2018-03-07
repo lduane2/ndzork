@@ -7,13 +7,9 @@ Actor::~Actor() {
 	}
 }
 
-void Actor::add_item(Item *item) {
-	items.insert(item);
-}
-
 //checks if Actor has the item in inventory; item version
 bool Actor::check_item(Item *item){
-	for (auto it: items){
+	for (auto it: get_items()){
 		if (it == item){
 			return true;
 		}
@@ -23,7 +19,7 @@ bool Actor::check_item(Item *item){
 
 //checks if Actor has the item in inventory; string version
 bool Actor::check_item(std::string item_name){
-	for(auto it: items){
+	for(auto it: get_items()){
 		if(it->get_name() == item_name){
 			return true;
 		}
@@ -31,35 +27,24 @@ bool Actor::check_item(std::string item_name){
 	return false;
 }
 
-void Actor::remove_item(Item *item) {
-	items.erase(item);
-}
-
-std::unordered_set<Item *> Actor::get_items() {
-	return items;
-}
-
 bool Actor::handle(Command c) {
 	std::string verb = c.get_verb();
-	if(verb == "inv"){
-		//check size of inventory
-		if(items.size() == 0){
-			print("You have nothing in your inventory\n");
-			return true;
-		} else {
-			print("Here is your inventory\n");
-			for(auto it : items){
-				print("\t", it->get_name(), "\n");
-			}
-			return true;
-		}
-	} else {
-		return Object::handle(c);
+	if(verb == "inv") return inventory();
+
+	return Object::handle(c);
+}
+
+bool Actor::inventory() {
+	if(get_items().empty()){
+		print("You have nothing in your inventory\n");
+		return true;
 	}
-/*    if (verb == "look"){
-        print(this->get_description());
-        return;
-    }
-*/
+
+	print("Here is your inventory\n");
+	for(auto it : get_items()){
+		print("\t", it->get_name(), "\n");
+	}
+
+	return true;
 }
 

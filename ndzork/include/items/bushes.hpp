@@ -11,6 +11,7 @@ public:
 	std::string get_full_name();
 	std::string get_descr();
 	bool is_takeable();
+	bool can_contain_items();
 	bool handle(Command command);
 
 private:

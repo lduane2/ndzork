@@ -18,10 +18,6 @@ Room::~Room() {
 	}
 }
 
-std::unordered_set<Item *> Room::get_items() {
-	return items;
-}
-
 std::unordered_set<Actor *> Room::get_actors() {
 	return actors;
 }
@@ -38,9 +34,6 @@ std::unordered_map<std::string, Room *> Room::get_dir_table() {
 	return dir_table;
 }
 
-void Room::add_item(Item *item) {
-	items.insert(item);
-}
 void Room::add_actor(Actor *actor) {
 	actors.insert(actor);
 }
@@ -55,9 +48,6 @@ void Room::add_misc(Misc *misc) {
 	miscs.insert(misc);
 }
 
-void Room::remove_item(Item *item) {
-	items.erase(item);
-}
 void Room::remove_actor(Actor *actor) {
 	actors.erase(actor);
 }

@@ -4,7 +4,7 @@
 #include "../../include/game/gameio.hpp"
 
 #include "../../include/actors/luke.hpp"
-#include "../../include/actors/jank.hpp"
+//#include "../../include/actors/jank.hpp"
 
 #include "../../include/rooms/jesus_statue.hpp"
 #include "../../include/rooms/main_circle.hpp"
@@ -115,9 +115,9 @@ Map * NDZork::build_map() {
 	Room * mainCircle = new Main_Circle();
 	map->add_room(mainCircle);
 
-	jenkins = new Jank();
-	jenkins_location = mainCircle;
-	mainCircle->add_actor(jenkins);
+	//	jenkins = new Jank();
+	//	jenkins_location = mainCircle;
+	// mainCircle->add_actor(jenkins);
 	jesus_statue->add_adj_room("south", mainCircle);
 	mainCircle->add_adj_room("north", jesus_statue);
 
@@ -171,25 +171,25 @@ void NDZork::add_handler(std::string verb,
 }
 
 void NDZork::demons() {
-	/// jenkins
-	move_number++;
-	//jenkins->demon();
-	if ((move_number % 4) ==1) {
-		auto dir_map = jenkins_location->get_dir_table();
-		auto room = dir_map.begin();
-		std::advance( room, (rand() %dir_map.size()) );
-		jenkins_location->remove_actor(jenkins);
-		if (jenkins_location ==  player_location) {
-			print("jenkins quickly ducks out, leaving you behind\n");
-		}
-		jenkins_location=room->second;
-		jenkins_location->add_actor(jenkins);
-		if (jenkins_location ==  player_location) {
-			print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
-		}
-	}
-	if (jenkins_location == player_location) {
-		print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
-	}
+	// /// jenkins
+	// move_number++;
+	// //jenkins->demon();
+	// if ((move_number % 4) ==1) {
+	// 	auto dir_map = jenkins_location->get_dir_table();
+	// 	auto room = dir_map.begin();
+	// 	std::advance( room, (rand() %dir_map.size()) );
+	// 	jenkins_location->remove_actor(jenkins);
+	// 	if (jenkins_location ==  player_location) {
+	// 		print("jenkins quickly ducks out, leaving you behind\n");
+	// 	}
+	// 	jenkins_location=room->second;
+	// 	jenkins_location->add_actor(jenkins);
+	// 	if (jenkins_location ==  player_location) {
+	// 		print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
+	// 	}
+	// }
+	// if (jenkins_location == player_location) {
+	// 	print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
+	// }
 
 }
