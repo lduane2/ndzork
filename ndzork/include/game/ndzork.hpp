@@ -40,7 +40,9 @@ private:
 	bool shake(Command command);
 	bool touch(Command command);
 	bool climb(Command command);
-
+    bool give(Command command);
+    bool talk(Command command);
+    bool help(Command command);
 	Map * build_map();
 
 	void build_actions();

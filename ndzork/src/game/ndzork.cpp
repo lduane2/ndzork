@@ -154,7 +154,7 @@ void NDZork::build_actions() {
 	add_handler("look", {"describe", "examine"}, &NDZork::look);
 	add_handler("quit", {"q", "goodbye"}, &NDZork::quit);
 	add_handler("light", &NDZork::light);
-	add_handler("take", &NDZork::take);
+	add_handler("take", {"pick"}, &NDZork::take);
 	add_handler("put", {"place","drop"},  &NDZork::put);
 	add_handler("inv", {"items", "inventory"}, &NDZork::inv);
 	add_handler("extinguish", {"extenguish", "putout"}, &NDZork::extinguish);
@@ -162,6 +162,9 @@ void NDZork::build_actions() {
 	add_handler("shake", &NDZork::shake);
 	add_handler("touch", &NDZork::touch);
 	add_handler("climb", &NDZork::climb);
+    add_handler("give", &NDZork::give);
+    add_handler("talk", {"speak", "converse", "chat", "discuss"}, &NDZork::talk);
+    add_handler("help", &NDZork::help);
 }
 
 void NDZork::add_handler(std::string verb,
@@ -196,11 +199,11 @@ void NDZork::demons() {
  	jenkins_location=room->second;
  	jenkins_location->add_actor(jenkins);
  	if (jenkins_location ==  player_location) {
- 		print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
+ 		print("Father Jenkins, head of the university, approaches you from almost out of no where.\n");
  	}
  }
  if (jenkins_location == player_location) {
- 	print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
+ 	print("Jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
  }
 
 }
