@@ -66,21 +66,21 @@ void NDZork::handle(Command c) {
 
 	// Actor
 	if (c.get_actor()->handle(c)) {
-		//demons();
+		demons();
 		return;
 	}
 
 	// Indirect Object
 	if (c.get_iobj() && c.get_iobj()->handle(c)) {
 		c.get_room()->handle(c);
-		//demons();
+		demons();
 		return;
 	}
 
 	// Direct Object
 	if (c.get_dobj() && c.get_dobj()->handle(c)) {
 		c.get_room()->handle(c);
-		//demons();
+		demons();
 		return;
 	}
 
@@ -90,19 +90,19 @@ void NDZork::handle(Command c) {
 		auto handler = (*verb_lookup).second;
 		if ((this->*handler)(c)) {
 			c.get_room()->handle(c);
-			//demons();
+			demons();
 			return;
 		}
 	}
 
 	// Room
 	if (c.get_room()->handle(c)) {
-		//demons();
+		demons();
 		return;
 	}
 
 	// Background Tasks
-	//demons();
+	demons();
 
 	// Nobody handled it completely
 	print("I don't know how to do that\n");
@@ -118,10 +118,9 @@ Map * NDZork::build_map() {
 	// Formula for adding a new room to the map
 	Room * mainCircle = new Main_Circle();
 	map->add_room(mainCircle);
-
-	//	jenkins = new Jank();
-	//	jenkins_location = mainCircle;
-	// mainCircle->add_actor(jenkins);
+    jenkins = new Jank();
+	//jenkins_location = mainCircle;
+    //mainCircle->add_actor(jenkins);
 	jesus_statue->add_adj_room("south", mainCircle);
 	mainCircle->add_adj_room("north", jesus_statue);
 
@@ -140,6 +139,9 @@ Map * NDZork::build_map() {
 	golden_dome->add_adj_room("west", grotto);
 	grotto->add_adj_room("east", golden_dome);
 
+
+    jenkins_location = grotto;
+    grotto->add_actor(jenkins);
 	Room *la_fun = new La_Fun();
 	map->add_room(la_fun);
 	golden_dome->add_adj_room("east", la_fun);
@@ -180,25 +182,25 @@ void NDZork::add_handler(std::string verb,
 }
 
 void NDZork::demons() {
-	// /// jenkins
-	// move_number++;
-	// //jenkins->demon();
-	// if ((move_number % 4) ==1) {
-	// 	auto dir_map = jenkins_location->get_dir_table();
-	// 	auto room = dir_map.begin();
-	// 	std::advance( room, (rand() %dir_map.size()) );
-	// 	jenkins_location->remove_actor(jenkins);
-	// 	if (jenkins_location ==  player_location) {
-	// 		print("jenkins quickly ducks out, leaving you behind\n");
-	// 	}
-	// 	jenkins_location=room->second;
-	// 	jenkins_location->add_actor(jenkins);
-	// 	if (jenkins_location ==  player_location) {
-	// 		print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
-	// 	}
-	// }
-	// if (jenkins_location == player_location) {
-	// 	print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
-	// }
+ /// jenkins
+ move_number++;
+ //jenkins->demon();
+ if ((move_number % 4) ==1) {
+ 	auto dir_map = jenkins_location->get_dir_table();
+ 	auto room = dir_map.begin();
+ 	std::advance( room, (rand() %dir_map.size()) );
+ 	jenkins_location->remove_actor(jenkins);
+ 	if (jenkins_location ==  player_location) {
+ 		print("jenkins quickly ducks out, leaving you behind\n");
+ 	}
+ 	jenkins_location=room->second;
+ 	jenkins_location->add_actor(jenkins);
+ 	if (jenkins_location ==  player_location) {
+ 		print("Father Jenkins, head of the university, approaches you from almost out of no where\n");
+ 	}
+ }
+ if (jenkins_location == player_location) {
+ 	print("jenkins shifts his wait nervously as if he has somewhere to be but doesnt quite know where.\n");
+ }
 
 }
