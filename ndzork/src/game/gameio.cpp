@@ -6,7 +6,7 @@ void print()
 
 std::string get_input_line() {
 	std::string input;
-
+/*
     nocbreak();
     echo();
     int ch = getch();
@@ -15,7 +15,7 @@ std::string get_input_line() {
         input.push_back(ch);
         ch = getch();
     }
-	//std::getline(std::cin, input, '\n');
+*/	std::getline(std::cin, input, '\n');
 
 
 

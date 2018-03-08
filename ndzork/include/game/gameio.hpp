@@ -5,14 +5,14 @@
 #include <stdio.h>
 #include <iostream>
 
-#include <ncurses.h>
+//#include <ncurses.h>
 void print();
 
 template<typename T, typename... Args>
 void print(T first, Args... args) {
 	std::string s(first);
-	printw("%s", s.c_str());
-    refresh();
+	printf("%s", s.c_str());
+    //refresh();
 	print(args...);
 }
 
