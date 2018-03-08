@@ -17,14 +17,3 @@ How to Win: The goal is of ND Zork is to save the school. This is achieved by li
 //End Game Spoiler//
 
 
-
-Later Priorities for completing the project
--------------------------------------------
-
-Deploy on Pi (or another constrained environment)
-Documentation to "build, deploy, use the artifact"
-
-Would Like to Haves
--------------------
-
-text file that we can pipe into the executable that wins the game
