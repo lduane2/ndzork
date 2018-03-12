@@ -2,6 +2,8 @@
 #define ROOM_GROTTO_HPP
 
 #include "room.hpp"
+#include "../command.hpp"
+#include "../game/gameio.hpp"
 
 #include <string>
 
@@ -14,6 +16,8 @@ public:
 private:
 	std::string name = "The Grotto";
 	std::string description = "Everybody is really quiet. There's a cave with a bunch of candles burning softly inside.";
+
+	bool look(Command c);
 };
 
 #endif

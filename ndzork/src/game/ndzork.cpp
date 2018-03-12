@@ -42,7 +42,6 @@ void NDZork::win_game() {
 void NDZork::loop() {
 	Parse p;
 	while(!ended) {
-		print("\n>");
 		p = parser.parse(get_input_line());
 
 		Object *dobj = str2obj(p.get_dobj());

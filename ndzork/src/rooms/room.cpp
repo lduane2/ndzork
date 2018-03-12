@@ -76,7 +76,7 @@ bool Room::look(Command c) {
 	}
 
 	for (auto item : get_items()) {
-		print("There is a ", item->get_full_name(), " here.\n");
+		print("  There is a ", item->get_full_name(), " here.\n");
 
 		// This Block used to make every item list their contents
 		// This behavior was not wanted for the bushes.
