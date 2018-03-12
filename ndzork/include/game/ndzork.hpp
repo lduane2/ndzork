@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <initializer_list>
 
-//#include "../actors/jank.hpp"
+#include "../actors/jank.hpp"
 
 class NDZork : public Game {
 public:
@@ -18,8 +18,8 @@ public:
 	void lose_game();
 	void win_game();
 private:
-	// Jank * jenkins;
-	// Room * jenkins_location;
+	 Jank * jenkins;
+	 Room * jenkins_location;
 
 	void handle(Command command);
 	void demons();
@@ -40,7 +40,9 @@ private:
 	bool shake(Command command);
 	bool touch(Command command);
 	bool climb(Command command);
-
+    bool give(Command command);
+    bool talk(Command command);
+    bool help(Command command);
 	Map * build_map();
 
 	void build_actions();

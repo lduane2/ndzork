@@ -75,7 +75,26 @@ bool NDZork::climb(Command /*c*/) {
 	return false;
 }
 
+bool NDZork::give(Command /*c*/) {
+    return false;
+}
+
 bool NDZork::touch(Command /*c*/) {
 	print("It feels exactly as you would expect.\n");
 	return true;
 }
+
+bool NDZork::talk(Command /*c*/) {
+    print("I think taking to yourself is a bad sign.\n");
+    return true;
+}
+
+bool NDZork::help(Command /*c*/) {
+    print("Welcome to ND Zork!  To play, type a command and then press enter.  for example, if you want to go north, type \"go north\".  Its that simple.  Use the take and put command to pick up and put down different items.  experiment with different verbs to interact in the game world in new ways!  type quit to quit.\n");
+    return true;
+
+
+}
+
+
+
