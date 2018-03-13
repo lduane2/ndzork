@@ -5,11 +5,7 @@
 #include <iostream>
 #include <cctype>
 
-#define COLS 40
-
-static int get_cols() {
-	return COLS;
-}
+int get_cols();
 
 template<typename T>
 void wrapped_print(std::ostream& ostream, T line) {
